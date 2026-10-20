@@ -1,85 +1,67 @@
 # 📸 Photobooth Assets Repository
 
-Repositori penyimpanan aset multimedia statis (CDN-hosted) untuk ekosistem **Kaze Photobooth**. Aset ini disajikan langsung ke Kiosk App dan Dashboard melalui jsDelivr / GitHub Raw CDN.
+Repositori penyimpanan aset multimedia statis (CDN-hosted) untuk ekosistem **Kaze Photobooth**.
+Disajikan langsung ke Kiosk App dan Dashboard melalui jsDelivr / GitHub Raw CDN.
 
 ---
 
-## 🗂️ Struktur Direktori
+## 🗂️ Struktur Direktori & Penamaan Bersih
 
-Semua aset diatur secara modular dan terpisah berdasarkan jenis dan fungsinya:
+Seluruh aset telah distandardisasi dengan penamaan semantik tanpa timestamp berantakan:
 
 ```text
 photobooth-assets/
 ├── branding/                      # Aset identitas & tampilan tenant/kiosk
-│   ├── announcements/             # Banner / poster pengumuman fullscreen kiosk
+│   ├── announcements/             # Banner / video pengumuman fullscreen (announcement_*.mp4)
 │   ├── backgrounds/               # Wallpaper / background layar start & selection
-│   ├── logos/                     # Logo tenant / watermark brand
+│   ├── logos/                     # Logo tenant / watermark brand (logo_kaze_main.png)
 │   ├── packages/                  # Gambar visual paket photobooth
 │   ├── screensavers/              # Video / gambar screensaver animasi idle
-│   └── watermarks/                # Watermark transparan untuk foto hasil
+│   └── watermarks/                # Watermark transparan untuk foto hasil (wm_kaze_default.png)
 │
 ├── filters/                       # Aset grading warna kamera
-│   ├── luts/                      # File tabel warna 3DLUT (.cube)
-│   └── previews/                  # Gambar thumbnail perbandingan sebelum & sesudah filter
+│   ├── luts/                      # Tabel warna 3DLUT (.cube) (lut_drip_04.cube, lut_flex_02.cube, dll)
+│   └── previews/                  # Thumbnail preview filter (thumb_drip_04.jpg, dll)
 │
 ├── frames/                        # Template bingkai foto cetak
-│   ├── side_b/                    # Template strip sisi belakang (duplex / strip B)
-│   ├── templates/                 # Template overlay frame utama (.webp / .png)
-│   └── thumbnails/                # Thumbnail mini untuk layar pemilihan frame
+│   ├── side_b/                    # Template strip sisi belakang / duplex (sideb_gito_vintage.webp, dll)
+│   ├── templates/                 # Template overlay frame utama (frame_gito_vintage_4r.webp, dll)
+│   └── thumbnails/                # Thumbnail mini kartu frame (thumb_gito_vintage.jpg, dll)
 │
 ├── icons/                         # Ikon antarmuka & navigasi
-│   ├── categories/                # Cover / ikon square 1:1 untuk kategori frame
-│   └── ui/                        # Ikon navigasi / kontrol UI kiosk
-│
-├── letters/                       # Aset font khusus / tipografi cetak
+│   ├── categories/                # Cover square 1:1 kategori (icon_cat_idulfitri.jpg, icon_cat_valentine.jpg, dll)
+│   └── ui/                        # Ikon kontrol UI kiosk
 │
 ├── payments/                      # Aset transaksi
-│   └── qris/                      # Gambar kode QRIS statis / gateway pembayaran
+│   └── qris/                      # Kode QRIS pembayaran (qris_kaze_primary.jpg)
 │
 └── stickers/                      # Aset dekorasi foto interaktif
-    ├── animated/                  # Stiker bergerak format GIF (.gif)
-    └── static/                    # Stiker ilustrasi diam format PNG (.png / .webp)
+    ├── animated/                  # Stiker bergerak GIF (stk_cat_dance.gif, stk_gura_wave.gif, stk_maxwell_spin.gif, dll)
+    └── static/                    # Stiker ilustrasi PNG (stk_cat_meme_08.png, stk_cat_cute_01.png, dll)
 ```
 
 ---
 
 ## 🌐 Format URL CDN (jsDelivr)
 
-Untuk performa tinggi dan caching global, gunakan format URL CDN berikut:
-
 ```text
-https://cdn.jsdelivr.net/gh/<owner>/photobooth-assets@main/<folder>/<nama_file>
+https://cdn.jsdelivr.net/gh/Dhiandika/photobooth-assets@main/<folder>/<nama_file>
 ```
 
-### Contoh URL:
-- **Frame Template**:
-  `https://cdn.jsdelivr.net/gh/Dhiandika/photobooth-assets@main/frames/templates/1.webp`
-- **Icon Kategori**:
-  `https://cdn.jsdelivr.net/gh/Dhiandika/photobooth-assets@main/icons/categories/idulfitri.jpg`
-- **LUT Filter**:
-  `https://cdn.jsdelivr.net/gh/Dhiandika/photobooth-assets@main/filters/luts/CLassicFilm01.cube`
-- **Stiker Bergerak**:
-  `https://cdn.jsdelivr.net/gh/Dhiandika/photobooth-assets@main/stickers/animated/gura-gwar-gura.gif`
-
----
-
-## 🏷️ Standar Penamaan File Baru
-
-Saat mengunggah melalui Dashboard Kaze, nama file otomatis diformat dengan format:
-
-```text
-{prefix}_{slug}_{YYYYMMDD}_{hash6}.{ext}
-```
-
-- **Prefix yang digunakan:**
-  - `frame_` : Template bingkai
-  - `thumb_` : Thumbnail preview
-  - `sideb_` : Bingkai sisi B
-  - `icon_`  : Ikon kategori
-  - `stk_`   : Stiker ilustrasi
-  - `lut_`   : File LUT color table
-  - `logo_`  : Logo tenant
-  - `wm_`    : Watermark cetak
-  - `qris_`  : QRIS pembayaran
-  - `bg_`    : Background layar
-  - `scrs_`  : Screensaver kiosk
+### Contoh URL Siap Pakai:
+- **Frame Utama**:  
+  `https://cdn.jsdelivr.net/gh/Dhiandika/photobooth-assets@main/frames/templates/frame_mu_aesthetic_4r.webp`
+- **Side B Duplex**:  
+  `https://cdn.jsdelivr.net/gh/Dhiandika/photobooth-assets@main/frames/side_b/sideb_gito_vintage.webp`
+- **Cover Kategori**:  
+  `https://cdn.jsdelivr.net/gh/Dhiandika/photobooth-assets@main/icons/categories/icon_cat_valentine.jpg`
+- **LUT 3D Table**:  
+  `https://cdn.jsdelivr.net/gh/Dhiandika/photobooth-assets@main/filters/luts/lut_drip_04.cube`
+- **Stiker Bergerak**:  
+  `https://cdn.jsdelivr.net/gh/Dhiandika/photobooth-assets@main/stickers/animated/stk_maxwell_spin.gif`
+- **Stiker PNG**:  
+  `https://cdn.jsdelivr.net/gh/Dhiandika/photobooth-assets@main/stickers/static/stk_cat_meme_08.png`
+- **Logo Brand**:  
+  `https://cdn.jsdelivr.net/gh/Dhiandika/photobooth-assets@main/branding/logos/logo_kaze_main.png`
+- **QRIS Pembayaran**:  
+  `https://cdn.jsdelivr.net/gh/Dhiandika/photobooth-assets@main/payments/qris/qris_kaze_primary.jpg`
